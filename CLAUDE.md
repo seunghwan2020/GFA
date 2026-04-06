@@ -331,15 +331,42 @@ else: 흰색 텍스트 (밝은 글자)
 
 ---
 
-## 7. 기술 스택 (계획)
+## 7. 기술 스택
 
+### 서비스 형태
+- **웹 서비스** (브라우저 기반)
+- 동시 접속: **10명 이내** (소규모 운영)
+- 전체 기능 구현 (MVP 없이 풀 기능)
+
+### Backend
 - **Python 3.10+**
+- **FastAPI**: REST API 서버 (비동기, 소규모에 적합)
 - **Pillow (PIL)**: 이미지 처리, 텍스트 렌더링, 오버레이
 - **NumPy**: 이미지 분석, 그라데이션 생성
-- **scikit-learn** (optional): K-means 색상 추출
-- **fonttools** (optional): 폰트 관리
-- **LLM API** (Claude/GPT): AI 카피 추천 시스템
-- **Web Framework** (FastAPI/Flask + React/Next.js): 서비스 프론트엔드/백엔드
+- **scikit-learn**: K-means 색상 추출
+- **fonttools**: 폰트 관리/로딩
+
+### Frontend
+- **Next.js (React)**: SPA 프론트엔드
+- 실시간 배너 미리보기
+- 폰트/톤/CTA 등 인터랙티브 설정 UI
+
+### AI 카피 추천 (Multi-LLM, BYOK 방식)
+- **사용자가 본인의 API Key를 입력**하는 BYOK(Bring Your Own Key) 방식
+- 지원 LLM:
+  - **Claude API** (Anthropic)
+  - **GPT API** (OpenAI)
+  - **Gemini API** (Google)
+- 사용자가 원하는 LLM 선택 가능
+- API Key는 서버에 저장하지 않고 세션/암호화 처리
+
+### 폰트
+- 수집 가능한 무료 상업용 폰트를 서비스에 번들링
+- 유료 폰트는 추후 라이선스 확보 시 추가
+
+### 인프라
+- 소규모(10명 이내) 운영 기준으로 단일 서버 배포 가능
+- Docker 컨테이너화 권장
 
 ---
 
